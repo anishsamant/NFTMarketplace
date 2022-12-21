@@ -1,0 +1,25 @@
+1) configure the truffle.config file to link ganache and truffle.
+2) create and initialize the contract deployment js.
+
+
+$ truffle init                      // to create a truffle project
+$ truffle compile                   // to compile the contract
+$ truffle migrate                   // to deploy
+$ truffle console                   // to open truffle console to test
+$ truffle migrate --reset           // to reset our migration
+$ truffle test                      // to execute tests
+
+ERC165 interface is used to check whether our contract is compliant
+
+
+https://i.ibb.co/QXw6sj1/k1.png
+https://i.ibb.co/0jXWJHz/k2.png
+https://i.ibb.co/KhCPp4c/k3.png 
+https://i.ibb.co/128yW6X/k4.png 
+https://i.ibb.co/724VVpd/k5.png 
+https://i.ibb.co/HdtxKRf/k6.png 
+https://i.ibb.co/Rybj7Bc/k7.png 
+https://i.ibb.co/dcv7g1M/k8.png 
+https://i.ibb.co/Jx3fjkH/k9.png 
+https://i.ibb.co/f8223qB/k10.png
+https://i.ibb.co/b5QJPxC/k11.png

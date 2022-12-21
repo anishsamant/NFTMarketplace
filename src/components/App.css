@@ -1,0 +1,103 @@
+body {
+	background: linear-gradient(-45deg, #f52804, #f5a803, #adab08, #b4d523);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+.mint-btn {
+    background-color: #3e0350; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 25px;
+    animation: btn-anim 1s ease-in-out infinite;
+}
+
+.transfer-btn {
+    background-color: #a30404;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 25px;
+}
+
+.transfer-btn-disabled {
+    background-color: #dddddd;
+    border: none;
+    color: rgb(109, 106, 106);
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 25px;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes btn-anim {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.cards-container-style {
+    border-radius: 4%;
+    width: 90%;
+    margin-inline: auto;
+    height: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+
+.container-filled {
+    position: absolute;
+    text-align: center;
+    top: 15%;
+    width: 100%;
+}
+
+.token {
+    width: 300px;
+    box-shadow: 0 8px 16px rgba(5, 5, 5, 0.3);
+    padding: 2px 16px;
+    margin: 16px;
+    border-radius: 8px;
+}
+
+img {
+    border: .3px rgba(#111111);
+    box-shadow: 10px 10px 8px rgba(#111111);
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    margin-top: 10px;
+}
+

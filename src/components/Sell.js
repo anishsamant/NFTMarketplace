@@ -43,10 +43,6 @@ function Sell(props) {
 		console.log('button clicked', sellingPrice);
 	}
 
-	function handleTextChange(event){
-		sellPriceinETH = event.target.value;
-	}
-
     return (
       <Modal
         {...props}

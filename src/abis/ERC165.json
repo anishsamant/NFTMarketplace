@@ -1255,7 +1255,7 @@
   "sourceMap": "98:637:0:-:0;;;194:98;;;;;;;;;;219:65;244:38;219:17;;;:65;;:::i;:::-;98:637;;540:190;630:10;615:25;;:11;:25;;;;607:65;;;;;;;;;;;;:::i;:::-;;;;;;;;;718:4;683:19;:32;703:11;683:32;;;;;;;;;;;;;;;;;;:39;;;;;;;;;;;;;;;;;;540:190;:::o;7:169:11:-;91:11;125:6;120:3;113:19;165:4;160:3;156:14;141:29;;7:169;;;;:::o;182:177::-;322:29;318:1;310:6;306:14;299:53;182:177;:::o;365:366::-;507:3;528:67;592:2;587:3;528:67;:::i;:::-;521:74;;604:93;693:3;604:93;:::i;:::-;722:2;717:3;713:12;706:19;;365:366;;;:::o;737:419::-;903:4;941:2;930:9;926:18;918:26;;990:9;984:4;980:20;976:1;965:9;961:17;954:47;1018:131;1144:4;1018:131;:::i;:::-;1010:139;;737:419;;;:::o;98:637:0:-;;;;;;;",
   "deployedSourceMap": "98:637:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;359:134;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;;429:4;453:19;:32;473:11;453:32;;;;;;;;;;;;;;;;;;;;;;;;;;;446:39;;359:134;;;:::o;88:117:11:-;197:1;194;187:12;334:149;370:7;410:66;403:5;399:78;388:89;;334:149;;;:::o;489:120::-;561:23;578:5;561:23;:::i;:::-;554:5;551:34;541:62;;599:1;596;589:12;541:62;489:120;:::o;615:137::-;660:5;698:6;685:20;676:29;;714:32;740:5;714:32;:::i;:::-;615:137;;;;:::o;758:327::-;816:6;865:2;853:9;844:7;840:23;836:32;833:119;;;871:79;;:::i;:::-;833:119;991:1;1016:52;1060:7;1051:6;1040:9;1036:22;1016:52;:::i;:::-;1006:62;;962:116;758:327;;;;:::o;1091:90::-;1125:7;1168:5;1161:13;1154:21;1143:32;;1091:90;;;:::o;1187:109::-;1268:21;1283:5;1268:21;:::i;:::-;1263:3;1256:34;1187:109;;:::o;1302:210::-;1389:4;1427:2;1416:9;1412:18;1404:26;;1440:65;1502:1;1491:9;1487:17;1478:6;1440:65;:::i;:::-;1302:210;;;;:::o",
   "source": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\nimport './interfaces/IERC165.sol';\r\n\r\ncontract ERC165 is IERC165 {\r\n\r\n    mapping(bytes4 => bool) private supportedInterfaces;\r\n\r\n    constructor() {\r\n        registerInterface(bytes4(keccak256('supportsInterface(bytes4)')));\r\n    }\r\n\r\n    // function to check if interface is supported or not\r\n    function supportsInterface(bytes4 interfaceId) external view returns (bool) {\r\n        return supportedInterfaces[interfaceId];\r\n    }\r\n\r\n    // function to register interface\r\n    function registerInterface(bytes4 interfaceId) internal {\r\n        require(interfaceId != 0xffffffff, 'Error: Invalid interface Id');\r\n        supportedInterfaces[interfaceId] = true;\r\n    }\r\n\r\n}",
-  "sourcePath": "D:\\Anish\\Projects\\MyProjects\\NFTMarketplace\\nft-marketplace-starter-kit\\src\\contracts\\ERC165.sol",
+  "sourcePath": "D:\\Anish\\Projects\\MyProjects\\NFTMarketplace\\src\\contracts\\ERC165.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC165.sol",
     "exportedSymbols": {
@@ -1938,7 +1938,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-10-24T00:04:57.551Z",
+  "updatedAt": "2022-12-22T03:12:07.977Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

@@ -9,8 +9,8 @@ import Popup from './Popup';
 
 import './App.css';
 
-
 import AWSHttpProvider from '@aws/web3-http-provider';
+
 const endpoint = 'https://nd-kbfrdgoieffaveoou7wdg6gp3u.ethereum.managedblockchain.us-east-1.amazonaws.com';
 const credentials = {
     	accessKeyId: 'AKIA4JXG64MDVMUD3Y3P',
@@ -350,12 +350,11 @@ class App extends Component {
 
     // detect ethereum provider
     async loadWeb3() {
-        // const provider = await detectEthereumProvider();
-        const provider = new AWSHttpProvider(endpoint, credentials);
+        const provider = await detectEthereumProvider();
+        // const provider = new AWSHttpProvider(endpoint, credentials);
         if (provider) {
             await window.ethereum.enable();
             window.web3 = new Web3(provider);
-            window.web3.eth.getNodeInfo().then(console.log);
             return 1;
         } else {
             console.log("Not Working");

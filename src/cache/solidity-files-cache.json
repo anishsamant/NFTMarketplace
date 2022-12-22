@@ -331,8 +331,8 @@
       ]
     },
     "D:\\Anish\\Projects\\MyProjects\\NFTMarketplace\\src\\contracts\\KryptoBird.sol": {
-      "lastModificationDate": 1644188013490,
-      "contentHash": "dc50951130c94cd814b2734de48db8f3",
+      "lastModificationDate": 1671712697875,
+      "contentHash": "a01b94afe1df857f74260fc37c816959",
       "sourceName": "contracts/KryptoBird.sol",
       "solcConfig": {
         "version": "0.8.17",

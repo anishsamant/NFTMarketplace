@@ -16,7 +16,7 @@ const credentials = {
     	accessKeyId: 'AKIA4JXG64MDVMUD3Y3P',
     	secretAccessKey: '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'
     }
-const web3 = new Web3(new AWSHttpProvider(endpoint, credentials));
+
 web3.eth.getNodeInfo().then(console.log);
 
 let KryptoBird = {
@@ -343,15 +343,16 @@ class App extends Component {
     ]
 
     async componentDidMount() {
-        // let res = await this.loadWeb3();
-        // if (res !== -1) {
-        await this.loadBlockchainData();
-        // }
+        let res = await this.loadWeb3();
+        if (res !== -1) {
+            await this.loadBlockchainData();
+        }
     }
 
     // detect ethereum provider
     async loadWeb3() {
-        const provider = await detectEthereumProvider();
+        // const provider = await detectEthereumProvider();
+        const provider = new AWSHttpProvider(endpoint, credentials);
         if (provider) {
             await window.ethereum.enable();
             window.web3 = new Web3(provider);
@@ -364,7 +365,7 @@ class App extends Component {
     }
 
     async loadBlockchainData() {
-        // const web3 = window.web3;
+        const web3 = window.web3;
         const accounts = await web3.eth.getAccounts();
         this.setState({account: accounts[0]})
         // const networkId = await web3.eth.net.getId();

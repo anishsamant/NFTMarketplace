@@ -10,7 +10,7 @@ function Popup(props) {
 			myBirdz[index++] = props.kryptoBirdz[i];
 		}
 	}
-	const listItems = props.kryptoBirdz.map((kbird, index) => 
+	const listItems = myBirdz.map((kbird, index) => 
 		<MDBCard key={kbird.kryptoBird} className='token img' style={{maxWidth: '25rem'}}>
 			<MDBCardImage 
 				src={kbird.kryptoBird}

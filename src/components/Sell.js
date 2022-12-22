@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBCardFooter } from 'mdb-react-ui-kit';
 
-function Popup(props) {
-	let sellPriceinETH = 0;
+function Sell(props) {
+	const [sellingPrice, setSellingPrice] = useState(0);
 	let index = 0;
 	const myBirdz = []
 	for(let i = 0; i < props.kryptoBirdz.length; i++) {
@@ -19,15 +19,22 @@ function Popup(props) {
 				position='top'
 				height= '250px'
 			/>
-			<MDBCardBody>
-				<MDBCardTitle className="projects-card-title">KryptoBirdz</MDBCardTitle>
-				{/* <MDBCardText className="projects-card-text">
-					<span>Owner: <span style={{color: '#0608A3', fontSize: '18px'}}>{kbird.owner}</span></span>
-				</MDBCardText> */}
-				<input type='text' placeholder='Selling Price in ETH' onChange={handleTextChange}></input>
-			</MDBCardBody>
+			<Modal.Body>
+        		<Form>
+            		<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+					<Form.Label>Price</Form.Label>
+					<Form.Control
+						type="text"
+						placeholder="selling price in ETH"
+						autoFocus
+						onInput = {e => setSellingPrice(e.target.value)}
+					/>
+					</Form.Group>
+				</Form>
+			</Modal.Body>
 			<MDBCardFooter className="projects-card-footer">
-				<button className='sell-btn' onClick={() => sellNFT()}>Sell</button>
+				{/* <input type='text' placeholder='Selling Price in ETH' onChange={handleTextChange}></input> */}
+				<button className='sell-btn' onClick={() => sellNFT(sellingPrice)}>Sell</button>
 			</MDBCardFooter>
 		</MDBCard>
 	);
@@ -70,4 +77,4 @@ function Popup(props) {
     );
   }
 
-export default Popup;
+export default Sell;

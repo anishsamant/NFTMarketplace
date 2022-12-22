@@ -3,6 +3,12 @@ import { Modal, Button, Form } from 'react-bootstrap';
 
 function Popup(props) {
     const [inp, setInp] = useState('');
+	const myBirdz = []
+	for(let i = 0; i < props.kryptoBirdz.length; i++) {
+		if(props.kryptoBirdz[i].owner == props.account){
+			console.log('true');
+		}
+	}
     return (
       <Modal
         {...props}

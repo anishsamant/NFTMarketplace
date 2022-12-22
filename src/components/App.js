@@ -489,7 +489,7 @@ class App extends Component {
                                 <h1 style={{color: 'black'}}>KryptoBirdz - NFT Marketplace</h1>
                                 <h5>11 uniquely generated Kbirdz</h5>
                                 <button className="mint-btn" onClick={() => this.mint()}>MINT</button>
-                                <button className="mint-btn" onClick={() => this.mint()}>BUY</button>
+                                <button className="mint-btn">BUY</button>
                                 <button className="mint-btn" onClick={() => this.toggleSell()}>SELL</button>
                                 {this.state.totalAvailable > 0 ? 
                                     <div style={{padding: '5px'}}> {this.state.totalAvailable} left, Hurry up!!! </div> :
@@ -517,7 +517,9 @@ class App extends Component {
                 <Sell
                     show = {this.state.showSell}
                     onHide = {() => this.setState({showSell: false})}
-                    from = {this.state.account}
+                    account = {this.state.account}
+                    kryptoBirdz = {this.state.kryptoBirdz}
+                    tokens = {tokens}
                 />
                     
             </div>

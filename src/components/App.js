@@ -6,6 +6,8 @@ import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText,
     MDBCardImage, MDBCardFooter } from 'mdb-react-ui-kit';
 
 import Popup from './Popup';
+import Buy from './Buy';
+import Sell from './Sell';
 
 import './App.css';
 
@@ -330,6 +332,7 @@ class App extends Component {
             kryptoBirdz: [],
             totalAvailable: 0,
             showPopup: false,
+            showBuy: false,
             tokenid: null
         }
     }
@@ -399,6 +402,12 @@ class App extends Component {
         });
         this.setState({
             tokenid: tokenId.index
+        });
+    }
+
+    toggleSell(){
+        this.setState({
+            showBuy: !this.state.showBuy
         });
     }
 
@@ -480,6 +489,8 @@ class App extends Component {
                                 <h1 style={{color: 'black'}}>KryptoBirdz - NFT Marketplace</h1>
                                 <h5>11 uniquely generated Kbirdz</h5>
                                 <button className="mint-btn" onClick={() => this.mint()}>MINT</button>
+                                <button className="mint-btn" onClick={() => this.mint()}>BUY</button>
+                                <button className="mint-btn" onClick={() => this.toggleSell()}>SELL</button>
                                 {this.state.totalAvailable > 0 ? 
                                     <div style={{padding: '5px'}}> {this.state.totalAvailable} left, Hurry up!!! </div> :
                                     <div style={{padding: '5px'}}> Sold out, buy from the market </div>
@@ -502,6 +513,11 @@ class App extends Component {
                     contract = {this.state.contract}
                     tokenid = {this.state.tokenid}
                     context = {this}
+                />
+                <Sell
+                    show = {this.state.showSell}
+                    onHide = {() => this.setState({showSell: false})}
+                    from = {this.state.account}
                 />
                     
             </div>

@@ -3,6 +3,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBCardFooter } from 'mdb-react-ui-kit';
 
 function Popup(props) {
+	let sellPriceinETH = 0;
 	let index = 0;
 	const myBirdz = []
 	for(let i = 0; i < props.kryptoBirdz.length; i++) {
@@ -25,19 +26,24 @@ function Popup(props) {
 				</MDBCardText>
 			</MDBCardBody>
 			<MDBCardFooter className="projects-card-footer">
-				<button onClick={() => sellNFT()}>Sell</button>
+				<input type='text' placeholder='Selling Price in ETH' onChange={handleTextChange}></input>
+				<button className={'transfer-btn'} onClick={() => sellNFT()}>Sell</button>
 			</MDBCardFooter>
 		</MDBCard>
 	);
 
 	function sellNFT(){
-		console.log('button clicked');
+		console.log('button clicked', sellPriceinETH);
+	}
+
+	function handleTextChange(event){
+		sellPriceinETH = event.target.value;
 	}
 
     return (
       <Modal
         {...props}
-        size="lg"
+        size="xl"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >

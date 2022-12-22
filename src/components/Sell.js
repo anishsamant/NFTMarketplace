@@ -12,10 +12,10 @@ function Sell(props) {
 		}
 	}
 	const listItems = myBirdz.map((kbird, index) => 
-		<MDBCard key={kbird.kryptoBird} className='token img' style={{maxWidth: '25rem'}}>
+		<MDBCard key={kbird.url} className='token img' style={{maxWidth: '25rem'}}>
 			<MDBCardImage 
-				src={kbird.kryptoBird}
-				alt={kbird.kryptoBird}
+				src={kbird.url}
+				alt={kbird.name}
 				position='top'
 				height= '250px'
 			/>

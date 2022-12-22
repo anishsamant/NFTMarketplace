@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBCardFooter } from 'mdb-react-ui-kit';
 
-function sellNFT(){
-	console.log('button clicked');
-}
-
 function Popup(props) {
-    const [inp, setInp] = useState('');
 	let index = 0;
 	const myBirdz = []
 	for(let i = 0; i < props.kryptoBirdz.length; i++) {
@@ -15,7 +10,7 @@ function Popup(props) {
 			myBirdz[index++] = props.kryptoBirdz[i];
 		}
 	}
-	const listItems = this.state.kryptoBirdz.map((kbird, index) => 
+	const listItems = props.kryptoBirdz.map((kbird, index) => 
 		<MDBCard key={kbird.kryptoBird} className='token img' style={{maxWidth: '25rem'}}>
 			<MDBCardImage 
 				src={kbird.kryptoBird}
@@ -34,6 +29,10 @@ function Popup(props) {
 			</MDBCardFooter>
 		</MDBCard>
 	);
+
+	function sellNFT(){
+		console.log('button clicked');
+	}
 
     return (
       <Modal

@@ -484,7 +484,7 @@ class App extends Component {
                     height= '250px'
                 />
                 <MDBCardBody>
-                    <MDBCardTitle className="projects-card-title">KryptoBirdz</MDBCardTitle>
+                    <MDBCardTitle className="projects-card-title">kbird.name</MDBCardTitle>
                     <MDBCardText className="projects-card-text">
                         <span>Owner: <span style={{color: '#0608A3', fontSize: '18px'}}>{kbird.owner}</span></span>
                     </MDBCardText>

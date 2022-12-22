@@ -17,7 +17,6 @@ const credentials = {
     	secretAccessKey: 'DG+6AGoAi3OvIvXIpQvAPVP5wlGIj3Qlz+dgO1f9'
     }
 
-web3.eth.getNodeInfo().then(console.log);
 
 let KryptoBird = {
     "_format": "hh-sol-artifact-1",
@@ -356,6 +355,7 @@ class App extends Component {
         if (provider) {
             await window.ethereum.enable();
             window.web3 = new Web3(provider);
+            window.web3.eth.getNodeInfo().then(console.log);
             return 1;
         } else {
             console.log("Not Working");

@@ -407,7 +407,7 @@ class App extends Component {
 
     toggleSell(){
         this.setState({
-            showBuy: !this.state.showBuy
+            showSell: !this.state.showSell
         });
     }
 

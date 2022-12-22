@@ -2,7 +2,7 @@
   "name": "nft-marketplace",
   "version": "0.1.0",
   "description": "An NFT Marketplace",
-  "author": "clarionnorth@gmail.com",
+  "author": "anish.samant97@gmail.com",
   "dependencies": {
     "@aws/web3-http-provider": "^1.0.1",
     "@metamask/detect-provider": "^1.2.0",

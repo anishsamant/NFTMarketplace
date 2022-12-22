@@ -10,6 +10,11 @@ import Popup from './Popup';
 import './App.css';
 
 
+import AWSHttpProvider from '@aws/web3-http-provider';
+const endpoint = process.env.NFT_HTTP_ENDPOINT;
+const web3 = new Web3(new AWSHttpProvider(endpoint));
+web3.eth.getNodeInfo().then(console.log);
+
 class App extends Component {
 
     constructor(props) {

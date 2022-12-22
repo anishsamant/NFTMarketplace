@@ -17454,8 +17454,8 @@ class App extends Component {
         const web3 = window.web3;
         const accounts = await web3.eth.getAccounts();
         this.setState({account: accounts[0]})
-        const networkId = await web3.eth.net.getId();
-        const networkData = KryptoBird.networks[networkId];
+        // const networkId = await web3.eth.net.getId();
+        // const networkData = KryptoBird.networks[networkId];
         if (networkData) {
             const abi = KryptoBird.abi;
             const address = networkData.address;

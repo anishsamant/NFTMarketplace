@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Web3 from "web3";
 import detectEthereumProvider from '@metamask/detect-provider';
-import KryptoBird from '.src/abis/KryptoBird.json';
+import KryptoBird from './src/abis/KryptoBird.json';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, 
     MDBCardImage, MDBCardFooter } from 'mdb-react-ui-kit';
 

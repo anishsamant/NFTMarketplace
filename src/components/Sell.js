@@ -21,13 +21,13 @@ function Popup(props) {
 			/>
 			<MDBCardBody>
 				<MDBCardTitle className="projects-card-title">KryptoBirdz</MDBCardTitle>
-				<MDBCardText className="projects-card-text">
+				{/* <MDBCardText className="projects-card-text">
 					<span>Owner: <span style={{color: '#0608A3', fontSize: '18px'}}>{kbird.owner}</span></span>
-				</MDBCardText>
+				</MDBCardText> */}
+				<input type='text' placeholder='Selling Price in ETH' onChange={handleTextChange}></input>
 			</MDBCardBody>
 			<MDBCardFooter className="projects-card-footer">
-				<input type='text' placeholder='Selling Price in ETH' onChange={handleTextChange}></input>
-				<button className={'transfer-btn'} onClick={() => sellNFT()}>Sell</button>
+				<button className='sell-btn' onClick={() => sellNFT()}>Sell</button>
 			</MDBCardFooter>
 		</MDBCard>
 	);

@@ -519,7 +519,7 @@ class App extends Component {
                     onHide = {() => this.setState({showSell: false})}
                     account = {this.state.account}
                     kryptoBirdz = {this.state.kryptoBirdz}
-                    tokens = {tokens}
+                    // tokens = {this.tokens}
                 />
                     
             </div>

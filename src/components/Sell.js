@@ -34,13 +34,13 @@ function Sell(props) {
 			</Modal.Body>
 			<MDBCardFooter className="projects-card-footer">
 				{/* <input type='text' placeholder='Selling Price in ETH' onChange={handleTextChange}></input> */}
-				<button className='sell-btn' onClick={() => sellNFT(sellingPrice)}>Sell</button>
+				<button className='sell-btn' onClick={() => sellNFT()}>Sell</button>
 			</MDBCardFooter>
 		</MDBCard>
 	);
 
 	function sellNFT(){
-		console.log('button clicked', sellPriceinETH);
+		console.log('button clicked', sellingPrice);
 	}
 
 	function handleTextChange(event){

@@ -312,6 +312,8 @@ let KryptoBird = {
     "linkReferences": {},
     "deployedLinkReferences": {}
   }
+
+  const contractAddress = '0x31e2d8603Fe408583c9f9432cC4Ab12B13327b47';
   
 
 class App extends Component {
@@ -361,12 +363,11 @@ class App extends Component {
         const web3 = window.web3;
         const accounts = await web3.eth.getAccounts();
         this.setState({account: accounts[0]})
-        // const networkId = await web3.eth.net.getId();
-        // const networkData = KryptoBird.networks[networkId];
+        const networkId = await web3.eth.net.getId();
+        const networkData = KryptoBird.networks[networkId];
         if (KryptoBird) {
             const abi = KryptoBird.abi;
-            const address = networkData.address;
-            const contract = new web3.eth.Contract(abi, address);
+            const contract = new web3.eth.Contract(abi, contractAddress);
             this.setState({contract})
 
             const totalSupply = await contract.methods.totalSupply().call();

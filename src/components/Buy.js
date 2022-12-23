@@ -30,7 +30,7 @@ function Buy(props) {
 			</Modal.Body>
 			<MDBCardFooter className="projects-card-footer">
 				{/* <input type='text' placeholder='Selling Price in ETH' onChange={handleTextChange}></input> */}
-				<button className='sell-btn' onClick={() => sellNFT(kbird)}>Sell</button>
+				<button className='sell-btn' onClick={() => buyNFT(kbird)}>Sell</button>
 			</MDBCardFooter>
 		</MDBCard>
 	);

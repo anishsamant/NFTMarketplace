@@ -36,4 +36,6 @@ contract KryptoBird is ERC721Connector {
             }
         } 
     }
+
+    function buyNFT(string memory kryptoBirdUrl, string memory nftName, uint _priceInWei) public {}
 }

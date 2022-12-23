@@ -598,43 +598,14 @@ class App extends Component {
                         onHide = {() => this.setState({showBuy: false})}
                         account = {this.state.account}
                         kryptoBirdz = {this.state.kryptoBirdz}
+                        contract = {this.state.contract}
+                        context = {this}
                         web3 = {this.state.web3}
                     />     
                 </div>
-<<<<<<< HEAD
-
-                <Popup
-                    show = {this.state.showPopup}
-                    onHide = {() => this.setState({showPopup: false})}
-                    from = {this.state.account}
-                    contract = {this.state.contract}
-                    tokenid = {this.state.tokenid}
-                    context = {this}
-                />
-                <Sell
-                    show = {this.state.showSell}
-                    onHide = {() => this.setState({showSell: false})}
-                    account = {this.state.account}
-                    kryptoBirdz = {this.state.kryptoBirdz}
-                    contract = {this.state.contract}
-                    context = {this}
-                    web3 = {this.state.web3}
-                />
-                <Buy
-                    show = {this.state.showBuy}
-                    onHide = {() => this.setState({showBuy: false})}
-                    account = {this.state.account}
-                    kryptoBirdz = {this.state.kryptoBirdz}
-                    contract = {this.state.contract}
-                    context = {this}
-                    web3 = {this.state.web3}
-                />     
-            </div>
-=======
             </main>
             )}
             </Authenticator>
->>>>>>> d0a352583668fc4e198f0576e299a4aaf0e9512e
         );
     }
 }

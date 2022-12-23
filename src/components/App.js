@@ -17,8 +17,35 @@ import {Amplify} from 'aws-amplify';
 import { withAuthenticator} from '@aws-amplify/ui-react';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import awsExports from '.././aws-exports';
+//import awsExports from '.././aws-exports';
 Amplify.configure(awsExports);
+
+const awsExports = {
+    "aws_project_region": "us-east-1",
+    "aws_cognito_identity_pool_id": "us-east-1:47c414d1-3e72-4c6f-8aed-948ec1fa28b9",
+    "aws_cognito_region": "us-east-1",
+    "aws_user_pools_id": "us-east-1_88uUjEfYX",
+    "aws_user_pools_web_client_id": "21bhkf014n4pmrbuml2bc7iuje",
+    "oauth": {},
+    "aws_cognito_username_attributes": [
+        "EMAIL"
+    ],
+    "aws_cognito_social_providers": [],
+    "aws_cognito_signup_attributes": [
+        "EMAIL"
+    ],
+    "aws_cognito_mfa_configuration": "OFF",
+    "aws_cognito_mfa_types": [
+        "SMS"
+    ],
+    "aws_cognito_password_protection_settings": {
+        "passwordPolicyMinLength": 8,
+        "passwordPolicyCharacters": []
+    },
+    "aws_cognito_verification_mechanisms": [
+        "EMAIL"
+    ]
+};
 
 // AWS HTTP
 //import AWSHttpProvider from '@aws/web3-http-provider';

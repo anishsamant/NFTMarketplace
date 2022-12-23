@@ -445,7 +445,7 @@ class App extends Component {
             spinner: false
         }
     }
-
+    
     tokens = [
         'https://i.ibb.co/QXw6sj1/k1.png', 'https://i.ibb.co/0jXWJHz/k2.png', 'https://i.ibb.co/KhCPp4c/k3.png', 
         'https://i.ibb.co/128yW6X/k4.png', 'https://i.ibb.co/724VVpd/k5.png', 'https://i.ibb.co/HdtxKRf/k6.png', 

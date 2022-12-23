@@ -40,16 +40,21 @@ function Buy(props) {
 		console.log(bal);
 		let gasAmount = await props.contract.methods.buyNFT(kbird.url, kbird.name, kbird.priceInWei).estimateGas({ from: props.account });
 
-		if (bal + gasAmount > kbird.priceInWei) {
+		if (Number(bal) + gasAmount > Number(kbird.priceInWei)) {
 			props.contract.methods.buyNFT(kbird.url, kbird.name, kbird.priceInWei).send({from: props.account})
 			.on('confirmation', (con) => {
-				// let item = {...kbird};
-				// item.isForSale = true;
-				// item.priceInWei = wei.toString();
-				// myBirdz[index] = item;
-				// setMyBirdz(myBirdz);
-                // kbird = null;
-				window.alert("Buy Successful")
+				if (kbird) {
+					props.context.setState({showSell: false});
+					// let item = {...kbird};
+					// item.isForSale = true;
+					// item.priceInWei = wei.toString();
+					// myBirdz[index] = item;
+					// setMyBirdz(myBirdz);
+					// kbird = null;
+					kbird = null;
+					window.alert("Buy Successful");
+
+				}
 			});
 		}
 	}

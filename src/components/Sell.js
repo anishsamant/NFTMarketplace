@@ -64,6 +64,7 @@ function Sell(props) {
 				props.context.setState({
 					kryptoBirdz: props.context.state.kryptoBirdz
 				});
+				kbird = null;
 				window.alert("NFT Successfully placed on sale with entered value");
             } 
         });

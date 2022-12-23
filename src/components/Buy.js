@@ -23,7 +23,7 @@ function Buy(props) {
 			<Modal.Body>
         		<Form>
             		<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-					<Form.Label>Last Sell Price: {ethers.utils.formatEther(kbird.priceInWei)}</Form.Label>
+					<Form.Label>Buy Price: {ethers.utils.formatEther(kbird.priceInWei)}</Form.Label>
 					</Form.Group>
 				</Form>
 			</Modal.Body>

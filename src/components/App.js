@@ -570,6 +570,7 @@ class App extends Component {
                     kryptoBirdz = {this.state.kryptoBirdz}
                     contract = {this.state.contract}
                     context = {this}
+                    web3 = {web3}
                     // tokens = {this.tokens}
                 />
                     

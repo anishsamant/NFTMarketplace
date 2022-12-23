@@ -425,7 +425,7 @@ class App extends Component {
             this.setState({totalSupply});
 
             for (let i = 0; i < totalSupply; i++) {
-                const KryptoBird = await contract.methods.NFTs().call();
+                const KryptoBird = await contract.methods.NFTsMinted(i).call();
                 const owner = await contract.methods.ownerOf(i).call();
                 let kbirdInfo = {
                   url: KryptoBird.url,

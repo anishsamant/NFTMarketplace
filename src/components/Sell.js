@@ -24,7 +24,7 @@ function Sell(props) {
 			<Modal.Body>
         		<Form>
             		<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-					<Form.Label>Current Price: {ethers.utils.formatEther(kbird.priceInWei)}</Form.Label>
+					<Form.Label>Last Sell Price: {ethers.utils.formatEther(kbird.priceInWei)}</Form.Label>
 					<Form.Control
 						type="text"
 						placeholder="selling price in ETH"
@@ -48,11 +48,10 @@ function Sell(props) {
 		props.contract.methods.putForSale(kbird.url, kbird.name, wei).send({from: props.account})
         .on('confirmation', (con) => {
             if (kbird) {
-				props.context.setState({showSell: false});
 				let ind = -1;
-				let NFTs = [...props.context.state.kryptoBirdz];
+				let NFTs = [...props.kryptoBirdz];
 				for (let i = 0; i < NFTs.length; i++) {
-					if (NFTs[i].url = kbird.url) {
+					if (NFTs[i].url == kbird.url) {
 						ind = i;
 						break;
 					}
@@ -65,6 +64,7 @@ function Sell(props) {
 					kryptoBirdz: props.context.state.kryptoBirdz
 				});
 				kbird = null;
+				props.context.setState({showSell: false});
 				window.alert("NFT Successfully placed on sale with entered value");
             } 
         });

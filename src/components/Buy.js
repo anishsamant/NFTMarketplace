@@ -23,7 +23,7 @@ function Buy(props) {
 			<Modal.Body>
         		<Form>
             		<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-					<Form.Label>Selling Price: {ethers.utils.formatEther(kbird.priceInWei)}</Form.Label>
+					<Form.Label>Last Sell Price: {ethers.utils.formatEther(kbird.priceInWei)}</Form.Label>
 					</Form.Group>
 				</Form>
 			</Modal.Body>
@@ -44,14 +44,23 @@ function Buy(props) {
 			props.contract.methods.buyNFT(kbird.url, kbird.name, kbird.priceInWei).send({from: props.account})
 			.on('confirmation', (con) => {
 				if (kbird) {
-					props.context.setState({showSell: false});
-					// let item = {...kbird};
-					// item.isForSale = true;
-					// item.priceInWei = wei.toString();
-					// myBirdz[index] = item;
-					// setMyBirdz(myBirdz);
-					// kbird = null;
+					let ind = -1;
+					let NFTs = [...props.kryptoBirdz];
+					for (let i = 0; i < NFTs.length; i++) {
+						if (NFTs[i].url == kbird.url) {
+							ind = i;
+							break;
+						}
+					}
+					let item = {...props.context.state.kryptoBirdz[ind]};
+					item.isForSale = false;
+					item.priceInWei = wei;
+					props.context.state.kryptoBirdz[ind] = item;
+					props.context.setState({
+						kryptoBirdz: props.context.state.kryptoBirdz
+					});
 					kbird = null;
+					props.context.setState({showSell: false});
 					window.alert("Buy Successful");
 
 				}

@@ -43,7 +43,7 @@ contract KryptoBird is ERC721Connector {
         for (uint i = 0; i < len; i++) {
             if (keccak256(abi.encodePacked(kryptoBirdUrl)) == keccak256(abi.encodePacked(NFTsMinted[i].url))) {
                 transferFrom(ownerOf(i), msg.sender, i);
-                NFTsMinted[i] = updateProperty(true, _priceInWei, kryptoBirdUrl, nftName);
+                NFTsMinted[i] = updateProperty(false, _priceInWei, kryptoBirdUrl, nftName);
                 break;
             }
         }

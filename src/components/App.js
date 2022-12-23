@@ -432,7 +432,7 @@ class App extends Component {
                   owner: owner,
                   name: KryptoBird.name,
                   isForSale: KryptoBird.isForSale,
-                  priceInWei: KryptoBird.priceInWei
+                  priceInWei: KryptoBird.priceInWei.toString()
                 }
                 this.setState({kryptoBirdz: [...this.state.kryptoBirdz, kbirdInfo]});
             }

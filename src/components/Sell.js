@@ -7,7 +7,8 @@ import context from 'react-bootstrap/esm/AccordionContext';
 
 function Sell(props) {
 	const [sellingPrice, setSellingPrice] = useState(0);
-	const [myBirdz, setMyBirdz] = useState([]);
+	// const [myBirdz, setMyBirdz] = useState();
+	let myBirdz = [];
 	let index = 0;
 	for(let i = 0; i < props.kryptoBirdz.length; i++) {
 		if(props.kryptoBirdz[i].owner == props.account) {
@@ -70,8 +71,9 @@ function Sell(props) {
 					}
 				}
 				if (ind >= 0) {
-					myBirdz.splice(ind, 1, tmpBird);
-					setMyBirdz(myBirdz);
+					context.state.kryptoBirdz.splice(ind, 1, tmpBird);
+					context.setState({kryptoBirdz: []});
+					context.setState({kryptoBirdz: [...context.state.kryptoBirdz]});
 				}                
                 kbird = null;
             } 

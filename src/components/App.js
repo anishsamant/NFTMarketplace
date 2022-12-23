@@ -563,6 +563,7 @@ class App extends Component {
                 });
                 kbirdInfo = null;
                 this.setState({totalAvailable: this.state.totalAvailable - 1});
+                window.alert("Congrats on minting the NFT!!");
             } 
         });
     }

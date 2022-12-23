@@ -12,7 +12,7 @@ function transfer(contract, from, to, tokenId, context) {
         context.setState({
             kryptoBirdz: context.state.kryptoBirdz
         });
-        window.alert("Congrats on minting the NFT!!");
+        window.alert("Ownership successfully transferred");
     });
 }
 

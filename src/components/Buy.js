@@ -36,7 +36,7 @@ function Buy(props) {
 	async function buyNFT(kbird) {
 		const web3 = props.web3;
 		console.log(kbird);
-		let bal = web3.eth.getBalance(props.account)
+		let bal = await web3.eth.getBalance(props.account)
 		console.log(bal);
 		let gasAmount = await props.contract.methods.buyNFT(kbird.url, kbird.name, kbird.priceInWei).estimateGas({ from: props.account });
 

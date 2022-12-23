@@ -25,12 +25,11 @@ function Sell(props) {
 			<Modal.Body>
         		<Form>
             		<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-					<Form.Label>Current Price: {ethers.utils.formatEther(kbird.priceInWei)}</Form.Label>
+					<Form.Label>Current Price: {sellingPrice == 0 ? ethers.utils.formatEther(kbird.priceInWei) : sellingPrice}</Form.Label>
 					<Form.Control
 						type="text"
 						placeholder="selling price in ETH"
 						autoFocus
-						value={sellingPrice == 0 ? kbird.priceInWei : sellingPrice}
 						onInput = {e => setSellingPrice(e.target.value)}
 					/>
 					</Form.Group>

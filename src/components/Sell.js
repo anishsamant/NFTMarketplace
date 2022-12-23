@@ -34,13 +34,25 @@ function Sell(props) {
 			</Modal.Body>
 			<MDBCardFooter className="projects-card-footer">
 				{/* <input type='text' placeholder='Selling Price in ETH' onChange={handleTextChange}></input> */}
-				<button className='sell-btn' onClick={() => sellNFT()}>Sell</button>
+				<button className='sell-btn' onClick={() => sellNFT(kbird)}>Sell</button>
 			</MDBCardFooter>
 		</MDBCard>
 	);
 
-	function sellNFT(){
-		console.log('button clicked', sellingPrice);
+	function sellNFT(kbird) {
+		console.log('kbird', kbird);
+		const weiValue = Web3.utils.toWei(sellingPrice, 'ether');
+		console.log('selling price in wei', weiValue);
+		this.state.contract.methods.putForSale(kbird.url, kbird.name, weiValue).send({from: this.state.account})
+        .on('confirmation', (con) => {
+            if (kbirdInfo) {
+                this.setState({
+                    kryptoBirdz: [...this.state.kryptoBirdz, kbirdInfo]
+                });
+                kbirdInfo = null;
+                this.setState({totalAvailable: this.state.totalAvailable - 1});
+            } 
+        });
 	}
 
     return (

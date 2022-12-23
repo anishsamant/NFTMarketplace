@@ -577,8 +577,8 @@ class App extends Component {
                                     {this.state.account}
                                 </small>
                             </li>
+                            <button onClick={signOut}>Sign Out</button>
                         </ul>
-                        <button onClick={signOut}>Sign Out</button>
                     </nav>
 
                     <div className='container-fluid mt-1'>

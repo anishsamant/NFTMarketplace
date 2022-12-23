@@ -47,9 +47,9 @@ function Sell(props) {
 		this.state.contract.methods.putForSale(kbird.url, kbird.name, weiValue).send({from: this.state.account})
         .on('confirmation', (con) => {
             if (kbird) {
-				this.setState({
-                    kryptoBirdz: [...this.state.kryptoBirdz, kbirdInfo]
-                });
+				// this.setState({
+                //     kryptoBirdz: [...this.state.kryptoBirdz, kbirdInfo]
+                // });
 				let len = props.kryptoBirdz.length;
 				let x = props.kryptoBirdz;
 				for (let i = 0; i < len; i++) {

@@ -578,13 +578,13 @@ class App extends Component {
                                 </small>
                             </li>
                         </ul>
+                        <button onClick={signOut}>Sign Out</button>
                     </nav>
 
                     <div className='container-fluid mt-1'>
                         <div className='row'>
                             <main role='main' className='col-lg-12 d-flex text-center'>
                                 <div className='content mr-auto ml-auto' stylee={{opacity: '0.8'}}>
-                                    <button onClick={signOut}>Sign Out</button>
                                     <h1 style={{color: 'black'}}>KryptoBirdz - NFT Marketplace</h1>
                                     <h5>11 uniquely generated Kbirdz</h5>
                                     <button className="mint-btn" onClick={() => this.mint()}>MINT</button>

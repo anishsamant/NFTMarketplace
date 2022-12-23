@@ -31,11 +31,26 @@ contract KryptoBird is ERC721Connector {
         uint len = NFTsMinted.length;
         for (uint i = 0; i < len; i++) {
             if (keccak256(abi.encodePacked(kryptoBirdUrl)) == keccak256(abi.encodePacked(NFTsMinted[i].url))) {
-                NFTsMinted[i] = NFTProperties(true, _priceInWei, kryptoBirdUrl, nftName);
+                NFTsMinted[i] = updateProperty(true, _priceInWei, kryptoBirdUrl, nftName);
                 break;
             }
         } 
     }
 
-    function buyNFT(string memory kryptoBirdUrl, string memory nftName, uint _priceInWei) public {}
+    // function to buy NFT on sale
+    function buyNFT(string memory kryptoBirdUrl, string memory nftName, uint _priceInWei) public {
+        uint len = NFTsMinted.length;
+        for (uint i = 0; i < len; i++) {
+            if (keccak256(abi.encodePacked(kryptoBirdUrl)) == keccak256(abi.encodePacked(NFTsMinted[i].url))) {
+                transferFrom(ownerOf(i), msg.sender, i);
+                NFTsMinted[i] = updateProperty(true, _priceInWei, kryptoBirdUrl, nftName);
+                break;
+            }
+        }
+    }
+
+    // function to update NFT property
+    function updateProperty(bool isForSale, uint priceInWei, string memory url, string memory name) private pure returns (NFTProperties memory) {
+        return (NFTProperties(isForSale, priceInWei, url, name));
+    }
 }

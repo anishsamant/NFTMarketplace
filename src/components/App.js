@@ -388,7 +388,8 @@ class App extends Component {
             showSell: false,
             showBuy: false,
             tokenid: null,
-            web3: null
+            web3: null,
+            spinner: false
         }
     }
 

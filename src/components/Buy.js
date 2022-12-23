@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBCardFooter } from 'mdb-react-ui-kit';
 import BigNumber from "bignumber.js";
-import { ethers } from 'ethers';
-import context from 'react-bootstrap/esm/AccordionContext';
+import { Contract, ethers } from 'ethers';
 
 function Buy(props) {
 	let index = 0;
@@ -29,16 +28,30 @@ function Buy(props) {
 				</Form>
 			</Modal.Body>
 			<MDBCardFooter className="projects-card-footer">
-				<button className='sell-btn' onClick={() => buyNFT(kbird)}>Buy</button>
+				<button className='sell-btn' onClick={() => buyNFT(kbird, index)}>Buy</button>
 			</MDBCardFooter>
 		</MDBCard>
 	);
 
-	function buyNFT(kbird) {
+	async function buyNFT(kbird) {
 		const web3 = props.web3;
 		console.log(kbird);
 		let bal = web3.eth.getBalance(props.account)
-		console.log()
+		console.log(bal);
+		gasAmount = await props.contract.methods.buyNFT(kbird.url, kbird.name, kbird.priceInWei).estimateGas({ from: props.account });
+
+		if (bal + gasAmount > kbird.priceInWei) {
+			props.contract.methods.buyNFT(kbird.url, kbird.name, kbird.priceInWei).send({from: props.account})
+			.on('confirmation', (con) => {
+				// let item = {...kbird};
+				// item.isForSale = true;
+				// item.priceInWei = wei.toString();
+				// myBirdz[index] = item;
+				// setMyBirdz(myBirdz);
+                // kbird = null;
+				window.alert("Buy Successful")
+			});
+		}
 	}
 
     return (

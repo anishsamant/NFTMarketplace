@@ -3,13 +3,12 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBCardFooter } from 'mdb-react-ui-kit';
 import BigNumber from "bignumber.js";
 import { ethers } from 'ethers';
-import context from 'react-bootstrap/esm/AccordionContext';
 
 function Sell(props) {
 	const [sellingPrice, setSellingPrice] = useState(0);
-	const [myBirdz, setMyBirdz] = useState([]);
+	const myBirdz = [];
 
-	for(let i = 0; i < props.kryptoBirdz.length && context.state.showSell; i++) {
+	for(let i = 0; i < props.kryptoBirdz.length && props.context.state.showSell; i++) {
 		if(props.kryptoBirdz[i].owner == props.account) {
 			myBirdz.push(props.kryptoBirdz[i]);
 		}
@@ -49,12 +48,7 @@ function Sell(props) {
 		props.contract.methods.putForSale(kbird.url, kbird.name, wei).send({from: props.account})
         .on('confirmation', (con) => {
             if (kbird) {
-				let item = {...kbird};
-				item.isForSale = true;
-				item.priceInWei = wei.toString();
-				myBirdz[index] = item;
-				setMyBirdz(myBirdz);
-                kbird = null;
+				window.alert("NFT Successfully placed on sale with entered value");
             } 
         });
 	}

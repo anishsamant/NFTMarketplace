@@ -377,7 +377,8 @@ class App extends Component {
             totalAvailable: 0,
             showPopup: false,
             showBuy: false,
-            tokenid: null
+            tokenid: null,
+            web3: null
         }
     }
 
@@ -412,6 +413,7 @@ class App extends Component {
 
     async loadBlockchainData() {
         const web3 = window.web3;
+        this.setState({web3})
         const accounts = await web3.eth.getAccounts();
         this.setState({account: accounts[0]})
         if (KryptoBird) {
@@ -570,7 +572,7 @@ class App extends Component {
                     kryptoBirdz = {this.state.kryptoBirdz}
                     contract = {this.state.contract}
                     context = {this}
-                    web3 = {web3}
+                    web3 = {this.state.web3}
                     // tokens = {this.tokens}
                 />
                     

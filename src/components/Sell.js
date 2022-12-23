@@ -41,7 +41,7 @@ function Sell(props) {
 
 	function sellNFT(kbird) {
 		console.log('kbird', kbird);
-		const weiValue = props.web3.utils.BN(props.web3.utils.toWei(sellingPrice, 'ether'));
+		const weiValue = Number(props.web3.utils.toWei(sellingPrice, 'ether'));
 		console.log('selling price in wei', weiValue);
 		this.state.contract.methods.putForSale(kbird.url, kbird.name, weiValue).send({from: this.state.account})
         .on('confirmation', (con) => {

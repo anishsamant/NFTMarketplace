@@ -18,7 +18,6 @@ import { withAuthenticator} from '@aws-amplify/ui-react';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 //import awsExports from '.././aws-exports';
-Amplify.configure(awsExports);
 
 const awsExports = {
     "aws_project_region": "us-east-1",
@@ -46,6 +45,8 @@ const awsExports = {
         "EMAIL"
     ]
 };
+
+Amplify.configure(awsExports);
 
 // AWS HTTP
 //import AWSHttpProvider from '@aws/web3-http-provider';
@@ -637,4 +638,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default wtihAuthenticator(App);

@@ -7,8 +7,8 @@ import context from 'react-bootstrap/esm/AccordionContext';
 
 function Sell(props) {
 	const [sellingPrice, setSellingPrice] = useState(0);
+	const [myBirdz, setMyBirdz] = useState();
 	let index = 0;
-	const myBirdz = []
 	for(let i = 0; i < props.kryptoBirdz.length; i++) {
 		if(props.kryptoBirdz[i].owner == props.account) {
 			myBirdz[index++] = props.kryptoBirdz[i];
@@ -25,7 +25,7 @@ function Sell(props) {
 			<Modal.Body>
         		<Form>
             		<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-					<Form.Label>Current Price: {sellingPrice == 0 ? ethers.utils.formatEther(kbird.priceInWei) : sellingPrice}</Form.Label>
+					<Form.Label>Current Price: {ethers.utils.formatEther(kbird.priceInWei)}</Form.Label>
 					<Form.Control
 						type="text"
 						placeholder="selling price in ETH"
@@ -70,9 +70,8 @@ function Sell(props) {
 					}
 				}
 				if (ind >= 0) {
-					context.state.kryptoBirdz.splice(ind, 1, tmpBird);
-					context.setState({kryptoBirdz: []});
-					context.setState({kryptoBirdz: [...context.state.kryptoBirdz]});
+					myBirdz.splice(ind, 1, tmpBird);
+					setMyBirdz(myBirdz);
 				}                
                 kbird = null;
             } 

@@ -17,11 +17,11 @@ import {Amplify} from 'aws-amplify';
 import { withAuthenticator} from '@aws-amplify/ui-react';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import awsExports from 'aws-exports';
+import awsExports from '.././aws-exports';
 Amplify.configure(awsExports);
 
 // AWS HTTP
-import AWSHttpProvider from '@aws/web3-http-provider';
+//import AWSHttpProvider from '@aws/web3-http-provider';
 const endpoint = 'https://nd-kbfrdgoieffaveoou7wdg6gp3u.ethereum.managedblockchain.us-east-1.amazonaws.com';
 const credentials = {
     accessKeyId: 'AKIA4JXG64MDVMUD3Y3P',

@@ -34,6 +34,7 @@ function Buy(props) {
 	);
 
 	async function buyNFT(kbird) {
+
 		const web3 = props.web3;
 		console.log(kbird);
 		let bal = await web3.eth.getBalance(props.account)
@@ -62,7 +63,20 @@ function Buy(props) {
 					kbird = null;
 					props.context.setState({showSell: false});
 					window.alert("Buy Successful");
+					console.log('button clicked', user.attributes.email);
+					const url = "https://rpz1eazp33.execute-api.us-east-1.amazonaws.com/dev/sendemail";
+					var eth = ethers.utils.formatEther(kbird.priceInWei);
+  					const data = {
+						"emailaddress": props.user.attributes.email,
+						"emailbody": `Congratulations! Your NFT ${kbird.name} purchase has been processed successfully for price ${eth} ETH.`
+					}
 
+  					const otherParam = {
+    					body: data,
+    					method:"POST"
+  					};
+
+  					fetch (url, otherParam).then(res=>{console.log(res)});
 				}
 			});
 		}

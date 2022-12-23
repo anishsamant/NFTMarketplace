@@ -11,8 +11,17 @@ import Sell from './Sell';
 
 import './App.css';
 
-import AWSHttpProvider from '@aws/web3-http-provider';
+// AWS Cognito
+import {Amplify} from 'aws-amplify';
+import awsconfig from './aws-exports';
+import { withAuthenticator} from '@aws-amplify/ui-react';
+import { Authenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+import awsExports from './aws-exports';
+Amplify.configure(awsExports);
 
+// AWS HTTP
+import AWSHttpProvider from '@aws/web3-http-provider';
 const endpoint = 'https://nd-kbfrdgoieffaveoou7wdg6gp3u.ethereum.managedblockchain.us-east-1.amazonaws.com';
 const credentials = {
     accessKeyId: 'AKIA4JXG64MDVMUD3Y3P',
@@ -526,69 +535,75 @@ class App extends Component {
             </MDBCard>
         );
         return (
-            <div className='container-filled'>
-                <nav className='navbar navbar-dark fixed-top bg-dark flex-mdnowrap p-0 shadow'>
-                    <div className='navbar-brand col-sm-3 col-md-3 mr-0' style={{color: 'white'}}>
-                        KryptoBird NFTS
-                    </div>
-                    <ul className='navbar-nav px-3'>
-                        <li className='nav-item text-nowrap d-none d-sm-none d-sm-block'>
-                            <small className='text-white'>
-                                {this.state.account}
-                            </small>
-                        </li>
-                    </ul>
-                </nav>
+            <Authenticator>
+            {({ signOut, user }) => (
+            <main>
+                <div className='container-filled'>
+                    <nav className='navbar navbar-dark fixed-top bg-dark flex-mdnowrap p-0 shadow'>
+                        <div className='navbar-brand col-sm-3 col-md-3 mr-0' style={{color: 'white'}}>
+                            KryptoBird NFTS
+                        </div>
+                        <ul className='navbar-nav px-3'>
+                            <li className='nav-item text-nowrap d-none d-sm-none d-sm-block'>
+                                <small className='text-white'>
+                                    {this.state.account}
+                                </small>
+                            </li>
+                        </ul>
+                    </nav>
 
-                <div className='container-fluid mt-1'>
-                    <div className='row'>
-                        <main role='main' className='col-lg-12 d-flex text-center'>
-                            <div className='content mr-auto ml-auto' stylee={{opacity: '0.8'}}>
-                                <h1 style={{color: 'black'}}>KryptoBirdz - NFT Marketplace</h1>
-                                <h5>11 uniquely generated Kbirdz</h5>
-                                <button className="mint-btn" onClick={() => this.mint()}>MINT</button>
-                                <button className="mint-btn" onClick={() => this.toggleBuy()}>BUY</button>
-                                <button className="mint-btn" onClick={() => this.toggleSell()}>SELL</button>
-                                {this.state.totalAvailable > 0 ? 
-                                    <div style={{padding: '5px'}}> {this.state.totalAvailable} left, Hurry up!!! </div> :
-                                    <div style={{padding: '5px'}}> Sold out, buy from the market </div>
-                                }       
-                            </div>
-                        </main>
+                    <div className='container-fluid mt-1'>
+                        <div className='row'>
+                            <main role='main' className='col-lg-12 d-flex text-center'>
+                                <div className='content mr-auto ml-auto' stylee={{opacity: '0.8'}}>
+                                    <h1 style={{color: 'black'}}>KryptoBirdz - NFT Marketplace</h1>
+                                    <h5>11 uniquely generated Kbirdz</h5>
+                                    <button className="mint-btn" onClick={() => this.mint()}>MINT</button>
+                                    <button className="mint-btn" onClick={() => this.toggleBuy()}>BUY</button>
+                                    <button className="mint-btn" onClick={() => this.toggleSell()}>SELL</button>
+                                    {this.state.totalAvailable > 0 ? 
+                                        <div style={{padding: '5px'}}> {this.state.totalAvailable} left, Hurry up!!! </div> :
+                                        <div style={{padding: '5px'}}> Sold out, buy from the market </div>
+                                    }       
+                                </div>
+                            </main>
+                        </div>
+
+                        <hr></hr>
+
+                        <div className="cards-container-style row">  
+                            {listItems}
+                        </div>
                     </div>
 
-                    <hr></hr>
-
-                    <div className="cards-container-style row">  
-                        {listItems}
-                    </div>
+                    <Popup
+                        show = {this.state.showPopup}
+                        onHide = {() => this.setState({showPopup: false})}
+                        from = {this.state.account}
+                        contract = {this.state.contract}
+                        tokenid = {this.state.tokenid}
+                        context = {this}
+                    />
+                    <Sell
+                        show = {this.state.showSell}
+                        onHide = {() => this.setState({showSell: false})}
+                        account = {this.state.account}
+                        kryptoBirdz = {this.state.kryptoBirdz}
+                        contract = {this.state.contract}
+                        context = {this}
+                        web3 = {this.state.web3}
+                    />
+                    <Buy
+                        show = {this.state.showBuy}
+                        onHide = {() => this.setState({showBuy: false})}
+                        account = {this.state.account}
+                        kryptoBirdz = {this.state.kryptoBirdz}
+                        web3 = {this.state.web3}
+                    />     
                 </div>
-
-                <Popup
-                    show = {this.state.showPopup}
-                    onHide = {() => this.setState({showPopup: false})}
-                    from = {this.state.account}
-                    contract = {this.state.contract}
-                    tokenid = {this.state.tokenid}
-                    context = {this}
-                />
-                <Sell
-                    show = {this.state.showSell}
-                    onHide = {() => this.setState({showSell: false})}
-                    account = {this.state.account}
-                    kryptoBirdz = {this.state.kryptoBirdz}
-                    contract = {this.state.contract}
-                    context = {this}
-                    web3 = {this.state.web3}
-                />
-                <Buy
-                    show = {this.state.showBuy}
-                    onHide = {() => this.setState({showBuy: false})}
-                    account = {this.state.account}
-                    kryptoBirdz = {this.state.kryptoBirdz}
-                    web3 = {this.state.web3}
-                />     
-            </div>
+            </main>
+            )}
+            </Authenticator>
         );
     }
 }

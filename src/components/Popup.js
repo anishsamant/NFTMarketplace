@@ -5,14 +5,17 @@ function transfer(contract, from, to, tokenId, context) {
     console.log(tokenId);
     contract.methods.transferFrom(from, to, tokenId).send({from: from})
     .on('confirmation', (con) => {
-        context.setState({showPopup: false});
-        let item = {...context.state.kryptoBirdz[tokenId]};
-        item.owner = to;
-        context.state.kryptoBirdz[tokenId] = item;
-        context.setState({
-            kryptoBirdz: context.state.kryptoBirdz
-        });
-        window.alert("Ownership successfully transferred");
+        if (tokenId) {
+            let item = {...context.state.kryptoBirdz[tokenId]};
+            item.owner = to;
+            context.state.kryptoBirdz[tokenId] = item;
+            context.setState({
+                kryptoBirdz: context.state.kryptoBirdz
+            });
+            tokenId = null;
+            context.setState({showPopup: false});
+            window.alert("Ownership successfully transferred");
+        }
     });
 }
 

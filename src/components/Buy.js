@@ -38,7 +38,7 @@ function Buy(props) {
 		console.log(kbird);
 		let bal = web3.eth.getBalance(props.account)
 		console.log(bal);
-		gasAmount = await props.contract.methods.buyNFT(kbird.url, kbird.name, kbird.priceInWei).estimateGas({ from: props.account });
+		let gasAmount = await props.contract.methods.buyNFT(kbird.url, kbird.name, kbird.priceInWei).estimateGas({ from: props.account });
 
 		if (bal + gasAmount > kbird.priceInWei) {
 			props.contract.methods.buyNFT(kbird.url, kbird.name, kbird.priceInWei).send({from: props.account})

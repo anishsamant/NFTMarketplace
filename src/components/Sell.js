@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBCardFooter } from 'mdb-react-ui-kit';
 import BigNumber from "bignumber.js";
-import ethers from 'ethers';
+import { ethers } from 'ethers';
 
 function Sell(props) {
 	const [sellingPrice, setSellingPrice] = useState(0);
@@ -44,7 +44,7 @@ function Sell(props) {
 	function sellNFT(kbird) {
 		console.log('kbird', kbird);
 		var wei = ethers.utils.parseEther(sellingPrice);
-		var wei = ethers.utils.bigNumberify(wei);
+		// var wei = ethers.utils.bigNumberify(wei);
 		console.log('selling price in wei', wei);
 		props.contract.methods.putForSale(kbird.url, kbird.name, wei).send({from: props.account})
         .on('confirmation', (con) => {

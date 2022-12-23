@@ -579,6 +579,11 @@ class App extends Component {
                             </li>
                             <button onClick={signOut}>Sign Out</button>
                         </ul>
+                        <ul className='navbar-nav px-3'>
+                            <li className='nav-item text-nowrap d-none d-sm-none d-sm-block'>
+                                <button onClick={signOut}>Sign Out</button>
+                            </li>
+                        </ul>
                     </nav>
 
                     <div className='container-fluid mt-1'>

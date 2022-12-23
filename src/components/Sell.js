@@ -8,7 +8,7 @@ function Sell(props) {
 	let index = 0;
 	const myBirdz = []
 	for(let i = 0; i < props.kryptoBirdz.length; i++) {
-		if(props.kryptoBirdz[i].owner == props.account){
+		if(props.kryptoBirdz[i].owner == props.account) {
 			myBirdz[index++] = props.kryptoBirdz[i];
 		}
 	}
@@ -46,12 +46,22 @@ function Sell(props) {
 		console.log('selling price in wei', weiValue);
 		this.state.contract.methods.putForSale(kbird.url, kbird.name, weiValue).send({from: this.state.account})
         .on('confirmation', (con) => {
-            if (kbirdInfo) {
-                this.setState({
+            if (kbird) {
+				this.setState({
                     kryptoBirdz: [...this.state.kryptoBirdz, kbirdInfo]
                 });
-                kbirdInfo = null;
-                this.setState({totalAvailable: this.state.totalAvailable - 1});
+				let len = props.kryptoBirdz.length;
+				let x = props.kryptoBirdz;
+				for (let i = 0; i < len; i++) {
+					if (x[i].url == kbird.url) {
+						x[i].isForSale = true;
+						x[i].priceInWei = weiValue;
+					}
+					break;
+				}
+
+                
+                kbird = null;
             } 
         });
 	}

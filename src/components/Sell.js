@@ -71,6 +71,8 @@ function Sell(props) {
 				}
 				if (ind >= 0) {
 					context.state.kryptoBirdz.splice(ind, 1, tmpBird);
+					context.setState({kryptoBirdz: []});
+					context.setState({kryptoBirdz: [...context.state.kryptoBirdz]});
 				}                
                 kbird = null;
             } 

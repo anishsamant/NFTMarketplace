@@ -9,7 +9,7 @@ function Sell(props) {
 	const [sellingPrice, setSellingPrice] = useState(0);
 	const [myBirdz, setMyBirdz] = useState([]);
 
-	for(let i = 0; i < props.kryptoBirdz.length && context.state.showSell; i++) {
+	for(let i = 0; i < props.kryptoBirdz.length && props.context.state.showSell; i++) {
 		if(props.kryptoBirdz[i].owner == props.account) {
 			myBirdz.push(props.kryptoBirdz[i]);
 		}

@@ -24,7 +24,7 @@ function Sell(props) {
 			<Modal.Body>
         		<Form>
             		<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-					<Form.Label>Current Price: {kbird.priceInWei}</Form.Label>
+					<Form.Label>Current Price: {ethers.utils.formatEther(kbird.priceInWei)}</Form.Label>
 					<Form.Control
 						type="text"
 						placeholder="selling price in ETH"
@@ -44,7 +44,6 @@ function Sell(props) {
 	function sellNFT(kbird) {
 		console.log('kbird', kbird);
 		var wei = ethers.utils.parseEther(sellingPrice);
-		var wei = ethers.utils.bigNumberify(wei);
 		console.log('selling price in wei', wei);
 		props.contract.methods.putForSale(kbird.url, kbird.name, wei).send({from: props.account})
         .on('confirmation', (con) => {

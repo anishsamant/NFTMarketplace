@@ -581,7 +581,7 @@ class App extends Component {
                         </ul>
                         <ul className='navbar-nav px-3'>
                             <li className='nav-item text-nowrap d-none d-sm-none d-sm-block'>
-                                <button onClick={signOut}>Sign Out</button>
+                                <button onClick={signOut}>Sign Out : {user}</button>
                             </li>
                         </ul>
                     </nav>

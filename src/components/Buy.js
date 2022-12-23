@@ -63,7 +63,7 @@ function Buy(props) {
 					kbird = null;
 					props.context.setState({showSell: false});
 					window.alert("Buy Successful");
-					console.log('button clicked', user.attributes.email);
+					console.log('button clicked', props.user.attributes.email);
 					const url = "https://rpz1eazp33.execute-api.us-east-1.amazonaws.com/dev/sendemail";
 					var eth = ethers.utils.formatEther(kbird.priceInWei);
   					const data = {

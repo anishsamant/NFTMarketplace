@@ -7,7 +7,7 @@ import context from 'react-bootstrap/esm/AccordionContext';
 
 function Sell(props) {
 	const [sellingPrice, setSellingPrice] = useState(0);
-	const [myBirdz, setMyBirdz] = useState(0);
+	const [myBirdz, setMyBirdz] = useState([]);
 
 	let index = 0;
 	for(let i = 0; i < props.kryptoBirdz.length; i++) {

@@ -54,6 +54,7 @@ function Buy(props) {
 					}
 					let item = {...props.context.state.kryptoBirdz[ind]};
 					item.isForSale = false;
+					item.owner = props.account;
 					props.context.state.kryptoBirdz[ind] = item;
 					props.context.setState({
 						kryptoBirdz: props.context.state.kryptoBirdz

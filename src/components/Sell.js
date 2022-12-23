@@ -30,6 +30,7 @@ function Sell(props) {
 						type="text"
 						placeholder="selling price in ETH"
 						autoFocus
+						value={sellingPrice == 0 ? kbird.priceInWei : sellingPrice}
 						onInput = {e => setSellingPrice(e.target.value)}
 					/>
 					</Form.Group>
@@ -77,6 +78,7 @@ function Sell(props) {
                 kbird = null;
             } 
         });
+		setSellingPrice(0);
 	}
 
     return (

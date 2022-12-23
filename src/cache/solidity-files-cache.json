@@ -258,8 +258,8 @@
       ]
     },
     "D:\\Anish\\Projects\\MyProjects\\NFTMarketplace\\src\\contracts\\ERC721.sol": {
-      "lastModificationDate": 1644476795734,
-      "contentHash": "6d36f5f302fdfaf1ab0178fcd2b286a2",
+      "lastModificationDate": 1671828957894,
+      "contentHash": "577d2e384c16704b897b7c2b5c4b1c58",
       "sourceName": "contracts/ERC721.sol",
       "solcConfig": {
         "version": "0.8.17",

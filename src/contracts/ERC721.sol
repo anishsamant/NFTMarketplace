@@ -59,7 +59,7 @@ contract ERC721 is ERC165, IERC721 {
 
     // function to transfer token
     function transferFrom(address _from, address _to, uint256 _tokenId) public override {
-        require(isApprovedOrOwner(msg.sender, _tokenId), 'ERC721: Transfer caller is neither owner nor approved');
+        require(isApprovedOrOwner(_from, _tokenId), 'ERC721: Transfer caller is neither owner nor approved');
         _transferFrom(_from, _to, _tokenId);  
     }
 

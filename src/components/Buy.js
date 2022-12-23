@@ -41,7 +41,7 @@ function Buy(props) {
 		let gasAmount = await props.contract.methods.buyNFT(kbird.url, kbird.name, kbird.priceInWei).estimateGas({ from: props.account });
 
 		if (Number(bal) + gasAmount > Number(kbird.priceInWei)) {
-			props.contract.methods.buyNFT(kbird.url, kbird.name, kbird.priceInWei).send({from: props.account})
+			props.contract.methods.buyNFT(kbird.url, kbird.name, kbird.priceInWei).send({from: props.account, value: kbird.priceInWei})
 			.on('confirmation', (con) => {
 				if (kbird) {
 					let ind = -1;

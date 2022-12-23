@@ -376,6 +376,7 @@ class App extends Component {
             kryptoBirdz: [],
             totalAvailable: 0,
             showPopup: false,
+            showSell: false,
             showBuy: false,
             tokenid: null,
             web3: null
@@ -455,6 +456,12 @@ class App extends Component {
     toggleSell(){
         this.setState({
             showSell: !this.state.showSell
+        });
+    }
+
+    toggleBuy(){
+        this.setState({
+            showBuy: !this.state.showBuy
         });
     }
 
@@ -540,7 +547,7 @@ class App extends Component {
                                 <h1 style={{color: 'black'}}>KryptoBirdz - NFT Marketplace</h1>
                                 <h5>11 uniquely generated Kbirdz</h5>
                                 <button className="mint-btn" onClick={() => this.mint()}>MINT</button>
-                                <button className="mint-btn">BUY</button>
+                                <button className="mint-btn" onClick={() => this.toggleBuy()}>BUY</button>
                                 <button className="mint-btn" onClick={() => this.toggleSell()}>SELL</button>
                                 {this.state.totalAvailable > 0 ? 
                                     <div style={{padding: '5px'}}> {this.state.totalAvailable} left, Hurry up!!! </div> :
@@ -575,7 +582,13 @@ class App extends Component {
                     web3 = {this.state.web3}
                     // tokens = {this.tokens}
                 />
-                    
+                <Buy
+                    show = {this.state.showBuy}
+                    onHide = {() => this.setState({showBuy: false})}
+                    account = {this.state.account}
+                    kryptoBirdz = {this.state.kryptoBirdz}
+                    web3 = {this.state.web3}
+                />     
             </div>
         );
     }

@@ -43,7 +43,7 @@ function Sell(props) {
 		console.log('kbird', kbird);
 		const weiValue = Number(props.web3.utils.toWei(sellingPrice, 'ether'));
 		console.log('selling price in wei', weiValue);
-		this.state.contract.methods.putForSale(kbird.url, kbird.name, weiValue).send({from: this.state.account})
+		props.contract.methods.putForSale(kbird.url, kbird.name, weiValue).send({from: props.account})
         .on('confirmation', (con) => {
             if (kbird) {
 				// this.setState({

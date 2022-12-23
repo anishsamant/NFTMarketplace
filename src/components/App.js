@@ -586,6 +586,8 @@ class App extends Component {
                     onHide = {() => this.setState({showBuy: false})}
                     account = {this.state.account}
                     kryptoBirdz = {this.state.kryptoBirdz}
+                    contract = {this.state.contract}
+                    context = {this}
                     web3 = {this.state.web3}
                 />     
             </div>

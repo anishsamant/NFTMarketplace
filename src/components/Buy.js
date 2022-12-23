@@ -35,7 +35,10 @@ function Buy(props) {
 	);
 
 	function buyNFT(kbird) {
+		const web3 = props.web3;
 		console.log(kbird);
+		let bal = web3.eth.getBalance(props.account)
+		console.log()
 	}
 
     return (

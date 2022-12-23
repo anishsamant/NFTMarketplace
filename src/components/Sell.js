@@ -48,6 +48,22 @@ function Sell(props) {
 		props.contract.methods.putForSale(kbird.url, kbird.name, wei).send({from: props.account})
         .on('confirmation', (con) => {
             if (kbird) {
+				props.context.setState({showSell: false});
+				let ind = -1;
+				let NFTs = [...props.context.state.kryptoBirdz];
+				for (let i = 0; i < NFTs.length; i++) {
+					if (NFTs[i].url = kbird.url) {
+						ind = i;
+						break;
+					}
+				}
+				let item = {...props.context.state.kryptoBirdz[ind]};
+				item.isForSale = true;
+				item.priceInWei = wei;
+				props.context.state.kryptoBirdz[ind] = item;
+				props.context.setState({
+					kryptoBirdz: props.context.state.kryptoBirdz
+				});
 				window.alert("NFT Successfully placed on sale with entered value");
             } 
         });

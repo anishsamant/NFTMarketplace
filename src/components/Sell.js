@@ -3,6 +3,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardImage, MDBCardFooter } from 'mdb-react-ui-kit';
 import BigNumber from "bignumber.js";
 import { ethers } from 'ethers';
+import context from 'react-bootstrap/esm/AccordionContext';
 
 function Sell(props) {
 	const [sellingPrice, setSellingPrice] = useState(0);
@@ -51,17 +52,26 @@ function Sell(props) {
 				// this.setState({
                 //     kryptoBirdz: [...this.state.kryptoBirdz, kbirdInfo]
                 // });
-				let len = props.kryptoBirdz.length;
-				let x = props.kryptoBirdz;
+				let len = context.state.kryptoBirdz.length;
+				let tmpBirdz = context.state.kryptoBirdz;
+				let tmpBird = {};
+				let ind = -1;
 				for (let i = 0; i < len; i++) {
-					if (x[i].url == kbird.url) {
-						x[i].isForSale = true;
-						x[i].priceInWei = wei.toString();
+					if (tmpBirdz[i].url == kbird.url) {
+						tmpBird = {
+							url: tmpBirdz[i].url,
+							owner: tmpBirdz[i].owner,
+							name: tmpBirdz[i].name,
+							isForSale: true,
+							priceInWei: wei.toString()
+						}
+						ind = i;
+						break;
 					}
-					break;
 				}
-
-                
+				if (ind >= 0) {
+					context.state.kryptoBirdz.splice(ind, 1, tmpBird);
+				}                
                 kbird = null;
             } 
         });

@@ -9,10 +9,9 @@ function Sell(props) {
 	const [sellingPrice, setSellingPrice] = useState(0);
 	const [myBirdz, setMyBirdz] = useState([]);
 
-	let index = 0;
 	for(let i = 0; i < props.kryptoBirdz.length; i++) {
 		if(props.kryptoBirdz[i].owner == props.account) {
-			myBirdz[index++] = props.kryptoBirdz[i];
+			myBirdz.push(props.kryptoBirdz[i]);
 		}
 	}
 	const listItems = myBirdz.map((kbird, index) => 
@@ -38,40 +37,23 @@ function Sell(props) {
 			</Modal.Body>
 			<MDBCardFooter className="projects-card-footer">
 				{/* <input type='text' placeholder='Selling Price in ETH' onChange={handleTextChange}></input> */}
-				<button className='sell-btn' onClick={() => sellNFT(kbird)}>Sell</button>
+				<button className='sell-btn' onClick={() => sellNFT(kbird, index)}>Sell</button>
 			</MDBCardFooter>
 		</MDBCard>
 	);
 
-	function sellNFT(kbird) {
+	function sellNFT(kbird, index) {
 		console.log('kbird', kbird);
 		var wei = ethers.utils.parseEther(sellingPrice);
 		console.log('selling price in wei', wei);
 		props.contract.methods.putForSale(kbird.url, kbird.name, wei).send({from: props.account})
         .on('confirmation', (con) => {
             if (kbird) {
-				let len = myBirdz.length;
-				let tmpBirdz = myBirdz;
-				let tmpBird = {};
-				let ind = -1;
-				for (let i = 0; i < len; i++) {
-					if (tmpBirdz[i].url == kbird.url) {
-						tmpBird = {
-							url: tmpBirdz[i].url,
-							owner: tmpBirdz[i].owner,
-							name: tmpBirdz[i].name,
-							isForSale: true,
-							priceInWei: wei.toString()
-						}
-						ind = i;
-						break;
-					}
-				}
-				if (ind >= 0) {
-					myBirdz.splice(ind, 1, tmpBird);
-					setMyBirdz([]);
-					setMyBirdz([...myBirdz]);
-				}                
+				let item = {...kbird};
+				item.isForSale = true;
+				item.priceInWei = wei.toString();
+				myBirdz[index] = item;
+				setMyBirdz(myBirdz);
                 kbird = null;
             } 
         });

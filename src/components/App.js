@@ -580,7 +580,6 @@ class App extends Component {
                     contract = {this.state.contract}
                     context = {this}
                     web3 = {this.state.web3}
-                    // tokens = {this.tokens}
                 />
                 <Buy
                     show = {this.state.showBuy}

@@ -423,7 +423,8 @@ let KryptoBird = {
 
 
 
-const contractAddress = '0xb8Ff85F06543766C0eB8F8988848421D80e0f540';
+
+const contractAddress = '0xfaCEc1536D608D10539a8dbE6E9F414C39FA2070';
   
 
 class App extends Component {

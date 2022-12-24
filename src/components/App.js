@@ -442,7 +442,8 @@ class App extends Component {
             showBuy: false,
             tokenid: null,
             web3: null,
-            spinner: false
+            spinner: false,
+            loaderShow: true
         }
     }
 
@@ -533,6 +534,9 @@ class App extends Component {
     }
 
     mint() {
+        this.setState({
+            loaderShow: false
+        });
         let kryptoBirdUrl, kryptoBirdName;
         let tokensMinted = this.state.kryptoBirdz.length;
         let tokenSupply = this.tokens.length;
@@ -569,6 +573,9 @@ class App extends Component {
                 });
                 kbirdInfo = null;
                 this.setState({totalAvailable: this.state.totalAvailable - 1});
+                this.setState({
+                    loaderShow: true
+                });
                 window.alert("Congrats on minting the NFT!!");
             } 
         });
@@ -639,6 +646,8 @@ class App extends Component {
                         <div className="cards-container-style row">  
                             {listItems}
                         </div>
+                        <Loader loaded={this.state.loaderShow} options={options}>
+		                </Loader>
                     </div>
 
                     <Popup

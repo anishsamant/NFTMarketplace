@@ -5,6 +5,31 @@ import BigNumber from "bignumber.js";
 import { Contract, ethers } from 'ethers';
 
 function Buy(props) {
+	const [loaderShow, setLoadShow] = useState(true);
+	var Loader = require('react-loader');
+
+	var options = {
+		lines: 13,
+		length: 20,
+		width: 10,
+		radius: 30,
+		scale: 1.00,
+		corners: 1,
+		color: '#0000ff',
+		opacity: 0.25,
+		rotate: 0,
+		direction: 1,
+		speed: 1,
+		trail: 60,
+		fps: 20,
+		zIndex: 2e9,
+		top: '50%',
+		left: '50%',
+		shadow: false,
+		hwaccel: false,
+		position: 'absolute'
+	};
+	
 	let index = 0;
 	const myBirdz = []
 	for(let i = 0; i < props.kryptoBirdz.length; i++) {
@@ -34,6 +59,7 @@ function Buy(props) {
 	);
 
 	async function buyNFT(kbird) {
+
 		const web3 = props.web3;
 		console.log(kbird);
 		let bal = await web3.eth.getBalance(props.account)
@@ -41,6 +67,7 @@ function Buy(props) {
 		let gasAmount = await props.contract.methods.buyNFT(kbird.url, kbird.name, kbird.priceInWei).estimateGas({ from: props.account });
 
 		if (Number(bal) + gasAmount > Number(kbird.priceInWei)) {
+			setLoadShow(false);
 			props.contract.methods.buyNFT(kbird.url, kbird.name, kbird.priceInWei).send({from: props.account, value: kbird.priceInWei})
 			.on('confirmation', (con) => {
 				if (kbird) {
@@ -59,10 +86,25 @@ function Buy(props) {
 					props.context.setState({
 						kryptoBirdz: props.context.state.kryptoBirdz
 					});
+					
+					console.log('button clicked', props.user.attributes.email);
+					const url = "https://rpz1eazp33.execute-api.us-east-1.amazonaws.com/dev/sendemail";
+					var eth = ethers.utils.formatEther(kbird.priceInWei);
+  					const data = {
+						"emailaddress": props.user.attributes.email,
+						"emailbody": `Congratulations! Your NFT ${kbird.name} purchase has been processed successfully for price ${eth} ETH.`
+					}
+
+  					const otherParam = {
+    					body: data,
+    					method:"POST"
+  					};
+
+  					fetch (url, otherParam).then(res=>{console.log(res)});
 					kbird = null;
 					props.context.setState({showSell: false});
+					setLoadShow(true);
 					window.alert("Buy Successful");
-
 				}
 			});
 		}
@@ -89,6 +131,8 @@ function Buy(props) {
 		<div className="cards-container-style row">  
 			{listItems}
 		</div>
+		<Loader loaded={loaderShow} options={options}>
+		</Loader>
         </Modal.Body>
         <Modal.Footer>
             {/* <Button onClick={() => transfer(props.contract, props.from, inp, props.tokenid, props.context)}>Send</Button> */}

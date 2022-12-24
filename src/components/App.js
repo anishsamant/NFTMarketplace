@@ -452,6 +452,10 @@ class App extends Component {
         'https://i.ibb.co/f8223qB/k10.png', 'https://i.ibb.co/b5QJPxC/k11.png'
     ]
 
+    tokenNames = ['Parrot', 'Eagle', 'Owl', 'Ostrich', 'Vulture', 'Turkey', 'Kingfisher', 'Humming bird',
+      'Duck', 'Swan', 'Hornbill'
+    ]
+
     async componentDidMount() {
         let res = await this.loadWeb3();
         if (res !== -1) {
@@ -528,7 +532,7 @@ class App extends Component {
     }
 
     mint() {
-        let kryptoBirdUrl;
+        let kryptoBirdUrl, kryptoBirdName;
         let tokensMinted = this.state.kryptoBirdz.length;
         let tokenSupply = this.tokens.length;
         if (tokensMinted === tokenSupply) {
@@ -544,18 +548,19 @@ class App extends Component {
             }
             if (!present) {
                 kryptoBirdUrl = this.tokens[i]
+                kryptoBirdName = this.tokenNames[i];
                 break;
             }
         }
         let kbirdInfo = {
             url: kryptoBirdUrl,
             owner: this.state.account,
-            name: 'name',
+            name: kryptoBirdName,
             isForSale: false,
             priceInWei: 0
         }
 
-        this.state.contract.methods.mint(kryptoBirdUrl, 'name').send({from: this.state.account})
+        this.state.contract.methods.mint(kryptoBirdUrl, kryptoBirdName).send({from: this.state.account})
         .on('confirmation', (con) => {
             if (kbirdInfo) {
                 this.setState({

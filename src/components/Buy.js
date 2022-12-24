@@ -87,11 +87,11 @@ function Buy(props) {
 						kryptoBirdz: props.context.state.kryptoBirdz
 					});
 					
-					console.log('button clicked', props.user.attributes.email);
+					// console.log('button clicked', props.user.attributes.email);
 					const url = "https://rpz1eazp33.execute-api.us-east-1.amazonaws.com/dev/sendemail";
 					var eth = ethers.utils.formatEther(kbird.priceInWei);
   					const data = {
-						"emailaddress": props.user.attributes.email,
+						"emailaddress": "anish.samant97@gmail.com",
 						"emailbody": `Congratulations! Your NFT ${kbird.name} purchase has been processed successfully for price ${eth} ETH.`
 					}
 

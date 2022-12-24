@@ -573,9 +573,6 @@ class App extends Component {
                 });
                 kbirdInfo = null;
                 this.setState({totalAvailable: this.state.totalAvailable - 1});
-                this.setState({
-                    loaderShow: true
-                });
                 window.alert("Congrats on minting the NFT!!");
             } 
         });
@@ -646,8 +643,6 @@ class App extends Component {
                         <div className="cards-container-style row">  
                             {listItems}
                         </div>
-                        <Loader loaded={this.state.loaderShow} options={options}>
-		                </Loader>
                     </div>
 
                     <Popup
